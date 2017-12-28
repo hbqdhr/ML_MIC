@@ -1,0 +1,24 @@
+
+#cd /scicomp/home/nxj4/Desktop/ML_github/
+  
+reffile="./database/Ref_NC_003028.fasta"
+bedfile="./database/PBP_3.bed"
+fq1=$1
+fq2=$2
+
+outfile="./example/out1.txt"
+
+chmod 777 ./bin/kestrel-1.0.1/kestrel
+./bin/kestrel-1.0.1/kestrel -r $reffile -i $bedfile -o $outfile $fq1 $fq2
+
+awk '$1!~"#" {print $2,$5}' ./example/out1.txt > ./example/out2.txt
+
+cat ./database/refPBP3_2.txt  ./example/out2.txt | sort -nk1,1 | sed 's/\..* / /'  |  awk  '!_[$1]++'  >  "./example/new_data2.txt"
+
+awk '{print $1}' ./example/new_data2.txt | awk  '{ printf( "%s ", $1 ); } END { printf( "\n" ); }'  > "./example/new_data.txt"
+awk '{print $2}' ./example/new_data2.txt | awk  '{ printf( "%s ", $1 ); } END { printf( "\n" ); }'  >> "./example/new_data.txt"
+
+# module load Python/3.5.2
+python ./script/ML_run.py ./example/new_data.txt
+# print result
+# results saved in ./example/prediction_res.txt
