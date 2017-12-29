@@ -18,7 +18,7 @@ cat ./database/refPBP3_2.txt  ./example/out2.txt | sort -nk1,1 | sed 's/\..* / /
 awk '{print $1}' ./example/new_data2.txt | awk  '{ printf( "%s ", $1 ); } END { printf( "\n" ); }'  > "./example/new_data.txt"
 awk '{print $2}' ./example/new_data2.txt | awk  '{ printf( "%s ", $1 ); } END { printf( "\n" ); }'  >> "./example/new_data.txt"
 
-# module load Python/3.5.2
+module load Python/3.5.2
 python ./script/ML_run.py ./example/new_data.txt
 # print result
 # results saved in ./example/prediction_res.txt
