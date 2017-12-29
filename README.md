@@ -1,7 +1,7 @@
 # ML_MIC
 
 # requirement: 
-python version 3.5.2 and package numpy,pandas,sklearn,scipy,pickle; java 6/7/8
+python version 3.5.2 and package numpy,pandas,sklearn,scipy,pickle; java 7/8
 
 # usage:
 1. go to download directory in terminal
