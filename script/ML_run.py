@@ -14,12 +14,9 @@ mymap = {'A':1, 'T':2, 'G':3, 'C':4}
 X_new = X.applymap(lambda s: mymap.get(s) if s in mymap else s)
 
 X_new = X_new.ix[0,:].values
-X_new.astype(int)
 
 for i in range(len(X_new)):
     if not isinstance(X_new[i],np.int64) :
-            print(i)
-            print(X_new[i])
             X_new[i]=5
 
 
